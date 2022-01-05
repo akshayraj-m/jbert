@@ -21,7 +21,7 @@ import numpy as np
 import re
 from tqdm import tqdm
 from sklearn.model_selection import train_test_split
-
+import pickle
 
 # In[ ]:
 
@@ -89,7 +89,12 @@ for i in tqdm(data):
 print(len(X),len(y))
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
-print("Data jumbled and splitted")
+try:
+    with open("data/processed_data.pkl","wb") as f:
+        pickle.dump({"X_train":X_train,"y_train":y_train,"X_test":X_test,"y_test":y_test}, f, protocol=pickle.HIGHEST_PROTOCOL)
+except:
+    pass
+print("Data jumbled,splitted and saved!")
 
 
 # In[ ]:

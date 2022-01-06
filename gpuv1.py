@@ -72,7 +72,7 @@ def replacer(line,max_=2):
     while (t_indices == indices).any():
         np.random.shuffle(t_indices)
     t[indices] = t[t_indices]
-    return detokenizer(orig),detokenizer(t)
+    return detokenizer(t),detokenizer(orig)
 
 
 # In[ ]:
